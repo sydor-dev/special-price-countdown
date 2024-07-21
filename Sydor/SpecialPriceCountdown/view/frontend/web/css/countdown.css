@@ -1,0 +1,27 @@
+#countdown{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+#countdown .countdown-section{
+    background-color: #1979c3;
+    border-radius: 3px;
+    align-items: center;
+    min-width: 60px;
+    padding: 10px;
+}
+
+#countdown .countdown-amount{
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2em;
+    min-width: 40px;
+    background-color: #ffffff;
+    padding: 5px;
+}
+#countdown .countdown-period{
+    text-align: center;
+    font-weight: 400;
+    margin-top: 5px;
+    color: #ffffff;
+}

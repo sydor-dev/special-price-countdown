@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var Sydor\SpecialPriceCountDown\Block\SpecialPriceCountdown $block
+ */
+
+$productId = $block->getRequest()->getParam('id');
+$specialPriceDate = $block->getSpecialPriceDate($productId);
+?>
+
+<div id="countdown">
+    <script type="text/javascript">
+        require(['jquery', 'countdown'], function ($) {
+            $(document).ready(function () {
+                $('#countdown').countdown(
+                    '<?php echo $specialPriceDate; ?>',
+                    function(event) {
+                        var days = event.strftime('%D').replace(/^0+/, '');
+                        var hours = event.strftime('%H').replace(/^0+/, '');
+                        var minutes = event.strftime('%M').replace(/^0+/, '');
+                        var seconds = event.strftime('%S').replace(/^0+/, '');
+
+                        $(this).html(
+                            '<div class="countdown-section">' +
+                            '<div class="countdown-amount">' + days + '</div>' +
+                            '<div class="countdown-period">days</div>' +
+                            '</div>' +
+                            '<div class="countdown-section">' +
+                            '<div class="countdown-amount">' + hours + '</div>' +
+                            '<div class="countdown-period">hours</div>' +
+                            '</div>' +
+                            '<div class="countdown-section">' +
+                            '<div class="countdown-amount">' + minutes + '</div>' +
+                            '<div class="countdown-period">minutes</div>' +
+                            '</div>' +
+                            '<div class="countdown-section">' +
+                            '<div class="countdown-amount">' + seconds + '</div>' +
+                            '<div class="countdown-period">seconds</div>' +
+                            '</div>'
+                        );
+                    }
+                );
+            });
+        });
+    </script>
+</div>
